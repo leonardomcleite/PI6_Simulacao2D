@@ -1,0 +1,223 @@
+* {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.card {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.input-group-text {
+  border-radius: 4px 0 0 4px !important
+}
+
+.input-group {
+  margin: 15px 0;
+}
+
+.compartimento {
+  height: 0px;
+  width: 150px;
+  background-color: #3f51b5;
+  transition: height 2s ease-out;
+  display: inline-flex;
+  margin-right: 20px;
+  position: absolute;
+  bottom: 48px;
+  border-radius: 6px;
+  box-shadow: 0 2px 1px -1px rgba(0.0.0..2), 0 1px 1px 0 rgba(0.0.0..14), 0 1px 3px 0 rgba(0.0.0..12) !important;
+}
+
+.compartimento-background {
+  height: 200px;
+  background-color: #f8f7f7;
+  transition: none !important;
+  box-shadow: 0 2px 1px -1px rgba(0.0.0..2), 0 1px 1px 0 rgba(0.0.0..14), 0 1px 3px 0 rgba(0.0.0..12) !important;
+}
+
+.card-body {
+  padding: 0px !important;
+}
+
+.carousel {
+  width: 78%;
+  margin: 60px auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.title-comp {
+  position: absolute;
+  bottom: 20px;
+  width: 150px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.col-form-label {
+  font-weight: bold;
+}
+
+#myChart{
+  background-color: #ffff;
+  border-radius: 6px;
+}
+
+.input-group-append, .input-group-prepend {
+  display: block !important;
+}
+
+div.background-scene {
+  background-image: url(../assets/background.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1260px 708px;
+  height: 708px;
+  width: 1260px;
+}
+
+div.person {
+  min-height: 110px;
+  width: 50px;
+  animation: backgroundImg 10s 1 linear;
+  animation-delay: 1s;
+  background-image: url(../assets/p1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 37px 110px;
+  transform: translate(850px, 62px);
+  
+  float: left;
+  display: none;
+}
+
+.c2 {
+  transform: translate(850px, 200px);
+}
+
+div.com-op {
+  background-image: url(../assets/com-op.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 140px 145px;
+  transform: translate(1000px, 324px);
+  width: 200px;
+  height: 161px;
+}
+
+
+div.sem-op {
+  background-image: url(../assets/sem-op.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 140px 120px;
+  transform: translate(1000px, 324px);
+  width: 200px;
+  height: 161px;
+}
+
+
+/* @keyframes backgroundImg {
+0% { transform: translateX(0px);background-image: url(../assets/p1.png);}
+1% { background-size: 50px 110px;transform: translateX(12,1px);background-image: url(../assets/p2.png);}
+2% { background-size: 50px 110px;transform: translateX(24,2px);background-image: url(../assets/p2.png);}
+3% { background-size: 50px 110px;transform: translateX(36,3px);background-image: url(../assets/p2.png);}
+4% { background-size: 50px 110px;transform: translateX(48,4px);background-image: url(../assets/p2.png);}
+5% { background-size: 50px 110px;transform: translateX(60,5px);background-image: url(../assets/p2.png);}
+6% { background-size: 50px 110px;transform: translateX(72,6px);background-image: url(../assets/p3.png);}
+7% { background-size: 50px 110px;transform: translateX(84,7px);background-image: url(../assets/p3.png);}
+8% { background-size: 50px 110px;transform: translateX(96,8px);background-image: url(../assets/p3.png);}
+9% { background-size: 50px 110px;transform: translateX(108,9px);background-image: url(../assets/p3.png);}
+10% { background-size: 50px 110px;transform: translateX(121px);background-image: url(../assets/p3.png);}
+11% { background-size: 50px 110px;transform: translateX(133,1px);background-image: url(../assets/p2.png);}
+12% { background-size: 50px 110px;transform: translateX(145,2px);background-image: url(../assets/p2.png);}
+13% { background-size: 50px 110px;transform: translateX(157,3px);background-image: url(../assets/p2.png);}
+14% { background-size: 50px 110px;transform: translateX(169,4px);background-image: url(../assets/p2.png);}
+15% { background-size: 50px 110px;transform: translateX(181,5px);background-image: url(../assets/p2.png);}
+16% { background-size: 50px 110px;transform: translateX(193,6px);background-image: url(../assets/p3.png);}
+17% { background-size: 50px 110px;transform: translateX(205,7px);background-image: url(../assets/p3.png);}
+18% { background-size: 50px 110px;transform: translateX(217,8px);background-image: url(../assets/p3.png);}
+19% { background-size: 50px 110px;transform: translateX(229,9px);background-image: url(../assets/p3.png);}
+20% { background-size: 50px 110px;transform: translateX(242px);background-image: url(../assets/p3.png);}
+21% { background-size: 50px 110px;transform: translateX(254,1px);background-image: url(../assets/p2.png);}
+22% { background-size: 50px 110px;transform: translateX(266,2px);background-image: url(../assets/p2.png);}
+23% { background-size: 50px 110px;transform: translateX(278,3px);background-image: url(../assets/p2.png);}
+24% { background-size: 50px 110px;transform: translateX(290,4px);background-image: url(../assets/p2.png);}
+25% { background-size: 50px 110px;transform: translateX(302,5px);background-image: url(../assets/p2.png);}
+26% { background-size: 50px 110px;transform: translateX(314,6px);background-image: url(../assets/p3.png);}
+27% { background-size: 50px 110px;transform: translateX(326,7px);background-image: url(../assets/p3.png);}
+28% { background-size: 50px 110px;transform: translateX(338,8px);background-image: url(../assets/p3.png);}
+29% { background-size: 50px 110px;transform: translateX(350,9px);background-image: url(../assets/p3.png);}
+30% { background-size: 50px 110px;transform: translateX(363px);background-image: url(../assets/p3.png);}
+31% { background-size: 50px 110px;transform: translateX(375,1px);background-image: url(../assets/p2.png);}
+32% { background-size: 50px 110px;transform: translateX(387,2px);background-image: url(../assets/p2.png);}
+33% { background-size: 50px 110px;transform: translateX(399,3px);background-image: url(../assets/p2.png);}
+34% { background-size: 50px 110px;transform: translateX(411,4px);background-image: url(../assets/p2.png);}
+35% { background-size: 50px 110px;transform: translateX(423,5px);background-image: url(../assets/p2.png);}
+36% { background-size: 50px 110px;transform: translateX(435,6px);background-image: url(../assets/p3.png);}
+37% { background-size: 50px 110px;transform: translateX(447,7px);background-image: url(../assets/p3.png);}
+38% { background-size: 50px 110px;transform: translateX(459,8px);background-image: url(../assets/p3.png);}
+39% { background-size: 50px 110px;transform: translateX(471,9px);background-image: url(../assets/p3.png);}
+40% { background-size: 50px 110px;transform: translateX(484px);background-image: url(../assets/p3.png);}
+41% { background-size: 50px 110px;transform: translateX(496,1px);background-image: url(../assets/p2.png);}
+42% { background-size: 50px 110px;transform: translateX(508,2px);background-image: url(../assets/p2.png);}
+43% { background-size: 50px 110px;transform: translateX(520,3px);background-image: url(../assets/p2.png);}
+44% { background-size: 50px 110px;transform: translateX(532,4px);background-image: url(../assets/p2.png);}
+45% { background-size: 50px 110px;transform: translateX(544,5px);background-image: url(../assets/p2.png);}
+46% { background-size: 50px 110px;transform: translateX(556,6px);background-image: url(../assets/p3.png);}
+47% { background-size: 50px 110px;transform: translateX(568,7px);background-image: url(../assets/p3.png);}
+48% { background-size: 50px 110px;transform: translateX(580,8px);background-image: url(../assets/p3.png);}
+49% { background-size: 50px 110px;transform: translateX(592,9px);background-image: url(../assets/p3.png);}
+50% { background-size: 50px 110px;transform: translateX(605px);background-image: url(../assets/p3.png);}
+51% { background-size: 50px 110px;transform: translateX(617,1px);background-image: url(../assets/p2.png);}
+52% { background-size: 50px 110px;transform: translateX(629,2px);background-image: url(../assets/p2.png);}
+53% { background-size: 50px 110px;transform: translateX(641,3px);background-image: url(../assets/p2.png);}
+54% { background-size: 50px 110px;transform: translateX(653,4px);background-image: url(../assets/p2.png);}
+55% { background-size: 50px 110px;transform: translateX(665,5px);background-image: url(../assets/p2.png);}
+56% { background-size: 50px 110px;transform: translateX(677,6px);background-image: url(../assets/p3.png);}
+57% { background-size: 50px 110px;transform: translateX(689,7px);background-image: url(../assets/p3.png);}
+58% { background-size: 50px 110px;transform: translateX(701,8px);background-image: url(../assets/p3.png);}
+59% { background-size: 50px 110px;transform: translateX(713,9px);background-image: url(../assets/p3.png);}
+60% { background-size: 50px 110px;transform: translateX(726px);background-image: url(../assets/p3.png);}
+61% { background-size: 50px 110px;transform: translateX(738,1px);background-image: url(../assets/p2.png);}
+62% { background-size: 50px 110px;transform: translateX(750,2px);background-image: url(../assets/p2.png);}
+63% { background-size: 50px 110px;transform: translateX(762,3px);background-image: url(../assets/p2.png);}
+64% { background-size: 50px 110px;transform: translateX(774,4px);background-image: url(../assets/p2.png);}
+65% { background-size: 50px 110px;transform: translateX(786,5px);background-image: url(../assets/p2.png);}
+66% { background-size: 50px 110px;transform: translateX(798,6px);background-image: url(../assets/p3.png);}
+67% { background-size: 50px 110px;transform: translateX(810,7px);background-image: url(../assets/p3.png);}
+68% { background-size: 50px 110px;transform: translateX(822,8px);background-image: url(../assets/p3.png);}
+69% { background-size: 50px 110px;transform: translateX(834,9px);background-image: url(../assets/p3.png);}
+70% { background-size: 50px 110px;transform: translateX(847px);background-image: url(../assets/p3.png);}
+71% { background-size: 50px 110px;transform: translateX(859,1px);background-image: url(../assets/p2.png);}
+72% { background-size: 50px 110px;transform: translateX(871,2px);background-image: url(../assets/p2.png);}
+73% { background-size: 50px 110px;transform: translateX(883,3px);background-image: url(../assets/p2.png);}
+74% { background-size: 50px 110px;transform: translateX(895,4px);background-image: url(../assets/p2.png);}
+75% { background-size: 50px 110px;transform: translateX(907,5px);background-image: url(../assets/p2.png);}
+76% { background-size: 50px 110px;transform: translateX(919,6px);background-image: url(../assets/p3.png);}
+77% { background-size: 50px 110px;transform: translateX(931,7px);background-image: url(../assets/p3.png);}
+78% { background-size: 50px 110px;transform: translateX(943,8px);background-image: url(../assets/p3.png);}
+79% { background-size: 50px 110px;transform: translateX(955,9px);background-image: url(../assets/p3.png);}
+80% { background-size: 50px 110px;transform: translateX(968px);background-image: url(../assets/p3.png);}
+81% { background-size: 50px 110px;transform: translateX(980,1px);background-image: url(../assets/p2.png);}
+82% { background-size: 50px 110px;transform: translateX(992,2px);background-image: url(../assets/p2.png);}
+83% { background-size: 50px 110px;transform: translateX(1004,3px);background-image: url(../assets/p2.png);}
+84% { background-size: 50px 110px;transform: translateX(1016,4px);background-image: url(../assets/p2.png);}
+85% { background-size: 50px 110px;transform: translateX(1028,5px);background-image: url(../assets/p2.png);}
+86% { background-size: 50px 110px;transform: translateX(1040,6px);background-image: url(../assets/p3.png);}
+87% { background-size: 50px 110px;transform: translateX(1052,7px);background-image: url(../assets/p3.png);}
+88% { background-size: 50px 110px;transform: translateX(1064,8px);background-image: url(../assets/p3.png);}
+89% { background-size: 50px 110px;transform: translateX(1076,9px);background-image: url(../assets/p3.png);}
+90% { background-size: 50px 110px;transform: translateX(1089px);background-image: url(../assets/p3.png);}
+91% { background-size: 50px 110px;transform: translateX(1101,1px);background-image: url(../assets/p2.png);}
+92% { background-size: 50px 110px;transform: translateX(1113,2px);background-image: url(../assets/p2.png);}
+93% { background-size: 50px 110px;transform: translateX(1125,3px);background-image: url(../assets/p2.png);}
+94% { background-size: 50px 110px;transform: translateX(1137,4px);background-image: url(../assets/p2.png);}
+95% { background-size: 50px 110px;transform: translateX(1149,5px);background-image: url(../assets/p2.png);}
+96% { background-size: 50px 110px;transform: translateX(1161,6px);background-image: url(../assets/p3.png);}
+97% { background-size: 50px 110px;transform: translateX(1173,7px);background-image: url(../assets/p3.png);}
+98% { background-size: 50px 110px;transform: translateX(1185,8px);background-image: url(../assets/p3.png);}
+99% { background-size: 50px 110px;transform: translateX(1197,9px);background-image: url(../assets/p3.png);}
+100% { transform: translateX(1210px);background-image: url(../assets/p1.png);}
+} */
