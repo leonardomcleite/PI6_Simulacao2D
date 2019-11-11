@@ -102,7 +102,7 @@ function movePerson(param) {
                 clearInterval(timer1);
                 
                 setTimeout(() => {
-                    document.querySelector(`#person${actualF1}`).style.display = "none";
+                    showElement(document.querySelector(`#person${actualF1}`), true);
                     actualF1++;
                     movePerson(param);
                 }, getRandomArbitrary(1, 10));
@@ -130,7 +130,7 @@ function movePerson(param) {
                 clearInterval(timer1);
 
                 setTimeout(() => {
-                    document.querySelector(`#person${actualF1}`).style.display = "none";
+                    showElement(document.querySelector(`#person${actualF1}`), true);
                     actualF1++;
                     movePerson(param);
                 }, getRandomArbitrary(1, 10));
@@ -155,7 +155,7 @@ function movePerson(param) {
                 document.querySelector(`#person${actualF2}`).style.backgroundSize = '37px 110px';
                 clearInterval(timer2);
                 setTimeout(() => {
-                    document.querySelector(`#person${actualF2}`).style.display = "none";
+                    showElement(document.querySelector(`#person${actualF2}`), true);
                     actualF2++;
                     movePerson(param);
                 }, getRandomArbitrary(1, 10));
@@ -169,8 +169,12 @@ function movePerson(param) {
  * Usando o css display esta função mostra ou não um elemento
  * @param el - Elemento HTML 
  */
-function showElement(el) {
-    el.style.display = "block";
+function showElement(el, hide) {
+    if (hide) {
+        el.style.display = "none";
+    } else {
+        el.style.display = "block";
+    }
 }
 
 /**
