@@ -102,6 +102,7 @@ function movePerson(param) {
                 clearInterval(timer1);
                 
                 setTimeout(() => {
+                    document.querySelector(`#person${actualF1}`).style.display = "none";
                     actualF1++;
                     movePerson(param);
                 }, getRandomArbitrary(1, 10));
@@ -129,6 +130,7 @@ function movePerson(param) {
                 clearInterval(timer1);
 
                 setTimeout(() => {
+                    document.querySelector(`#person${actualF1}`).style.display = "none";
                     actualF1++;
                     movePerson(param);
                 }, getRandomArbitrary(1, 10));
@@ -153,6 +155,7 @@ function movePerson(param) {
                 document.querySelector(`#person${actualF2}`).style.backgroundSize = '37px 110px';
                 clearInterval(timer2);
                 setTimeout(() => {
+                    document.querySelector(`#person${actualF2}`).style.display = "none";
                     actualF2++;
                     movePerson(param);
                 }, getRandomArbitrary(1, 10));
