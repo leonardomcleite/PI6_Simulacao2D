@@ -101,6 +101,8 @@ function movePerson(param) {
                 document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p1.png')`;
                 document.querySelector(`#person${actualF1}`).style.backgroundSize = '37px 110px';
                 clearInterval(timer1);
+                actualF1++;
+                movePerson(param);
             }
             x1++;
         }, Number(velocidade.value));
@@ -123,6 +125,8 @@ function movePerson(param) {
                 document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p1.png')`;
                 document.querySelector(`#person${actualF1}`).style.backgroundSize = '37px 110px';
                 clearInterval(timer1);
+                actualF1++;
+                movePerson(param);
             }
             x1++;
         }, Number(velocidade.value));
@@ -143,6 +147,8 @@ function movePerson(param) {
                 document.querySelector(`#person${actualF2}`).style.backgroundImage = `url('assets/p1.png')`;
                 document.querySelector(`#person${actualF2}`).style.backgroundSize = '37px 110px';
                 clearInterval(timer2);
+                actualF2++;
+                movePerson(param);
             }
         }, Number(velocidade.value));
     }
