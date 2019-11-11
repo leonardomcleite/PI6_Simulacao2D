@@ -43,7 +43,6 @@ function iniciarSimulacao() {
     showElement(scene);
     qtdPessoas = getRandomArbitrary(4, 30);
     let qtdAtendentes = getRandomArbitrary(1.5, 2);
-    let tempoAtendimento = getRandomArbitrary(1, 10);
     let persons = ``;
 
     if ((qtdAtendentes.toFixed(0))*1 === 1) {
@@ -101,8 +100,11 @@ function movePerson(param) {
                 document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p1.png')`;
                 document.querySelector(`#person${actualF1}`).style.backgroundSize = '37px 110px';
                 clearInterval(timer1);
-                actualF1++;
-                movePerson(param);
+                
+                setTimeout(() => {
+                    actualF1++;
+                    movePerson(param);
+                }, getRandomArbitrary(1, 10));
             }
             x1++;
         }, Number(velocidade.value));
@@ -125,8 +127,11 @@ function movePerson(param) {
                 document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p1.png')`;
                 document.querySelector(`#person${actualF1}`).style.backgroundSize = '37px 110px';
                 clearInterval(timer1);
-                actualF1++;
-                movePerson(param);
+
+                setTimeout(() => {
+                    actualF1++;
+                    movePerson(param);
+                }, getRandomArbitrary(1, 10));
             }
             x1++;
         }, Number(velocidade.value));
@@ -147,8 +152,10 @@ function movePerson(param) {
                 document.querySelector(`#person${actualF2}`).style.backgroundImage = `url('assets/p1.png')`;
                 document.querySelector(`#person${actualF2}`).style.backgroundSize = '37px 110px';
                 clearInterval(timer2);
-                actualF2++;
-                movePerson(param);
+                setTimeout(() => {
+                    actualF2++;
+                    movePerson(param);
+                }, getRandomArbitrary(1, 10));
             }
         }, Number(velocidade.value));
     }
