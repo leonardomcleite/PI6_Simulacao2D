@@ -27,7 +27,7 @@
         <h6 class="card-subtitle mb-2 text-muted">Teoria das Filas</h6>
       </div>
       <div class="form">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <form id="formStep1" onsubmit="return false;">
@@ -50,9 +50,21 @@
                   <button type="button" class="btn btn-primary mb-2" onclick="return setQuantidadeCompartimentos()">Continuar</button>
                 </div>
               </form>
-            </div>
-            <div class="carousel-item carousel-compartimentos">
-              <div class="background-scene">
+            </div> -->
+            <div class="carousel-item carousel-compartimentos active">
+              <div class="row">
+                <div class="input-group row col-sm-3" style="margin-left: 100px;">
+                  <label for="velocidade" class="col-sm-6 col-form-label"> Velocidade (ms) </label>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"> # </div>
+                  </div>
+                  <input type="number" class="col-sm-6 form-control" id="velocidade" value="5">
+                </div>
+                <div class="d-flex flex-row-reverse col-sm-6" style="justify-content: center;margin: 20px 0;">
+                  <button type="button" class="btn btn-primary mb-2" style="width: 400px;" onclick="return iniciarSimulacao()">Iniciar Simulação</button>
+                </div>
+              </div>
+              <div class="background-scene" id="scene" style="display: none; margin: 0 auto;">
                 <!-- <div class="com-op" id="caixa"></div>
                 <div class="com-op" id="caixa2"></div> -->
                 <div caixa></div>

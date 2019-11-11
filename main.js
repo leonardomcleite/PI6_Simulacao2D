@@ -15,9 +15,8 @@ let componentConfigCompartimento = document.querySelector('[config-compartimento
 let alerts = document.querySelector('[alerts]');
 let personagem = document.querySelector('[personagem]');
 let caixa = document.querySelector('[caixa]');
-let qtdPessoas = 1;
-let actualF1;
-let actualF2;
+
+
 
 let listAlerts = [];
 let timeouts = [];
@@ -25,58 +24,54 @@ let qtdCompartimentos;
 let storage = [];
 let colors = ['#ffb74d','#ff9800','#f57c00','#e65100','#bf360c','#ff7043','#ffab91','#fbe9e7'];
 
-/**
- * Verifica se a quantidade de compartimentos é igual ou superior à 1
- */
-function setQuantidadeCompartimentos() {
-    // Valida a qtd
-    if (Number(inputQtdAtendentes.value) < 1 || Number(inputQtdAtendentes.value) > 2) {
-        showAlert("Só é possivel 1 ou 2 atendentes");
-    } else { 
-        if (formStep1.checkValidity()) {
-            $('.carousel').carousel('next');
-            createSimulation();
-        }
-    }
-}
+
+let qtdPessoas = 1;
+let actualF1;
+let actualF2;
+let scene = document.querySelector('#scene');
+let timer1;
+let timer2;
+let velocidade = document.querySelector('#velocidade');
+
 
 /**
  * Cria a lista de compartimentos para o combo
  */
-function createSimulation() {
+function iniciarSimulacao() {
+    clearInterval(timer1);
+    clearInterval(timer2);
+    showElement(scene);
     qtdPessoas = getRandomArbitrary(4, 30);
-    let persons= ``;
+    let qtdAtendentes = getRandomArbitrary(1.5, 2);
+    let tempoAtendimento = getRandomArbitrary(1, 10);
+    let persons = ``;
 
-    if (Number(inputQtdAtendentes.value) === 1) {
+    if ((qtdAtendentes.toFixed(0))*1 === 1) {
         caixa.innerHTML = `<div class="com-op" id="caixa1"></div><div class="sem-op" id="caixa2"></div>`;
-        qtdPessoas = getRandomArbitrary(1, 30);
 
-        for (let i = 0; i < qtdPessoas; i++) {
+        for (let i = 0; i < ((qtdPessoas).toFixed(0))*1; i++) {
             persons += `<div class="person" id="person${i}"></div>`
         }
         personagem.innerHTML = persons;
         actualF1 = 0;
 
-        showElement(document.querySelector(`#person${actualF1}`));
+        movePerson(1);
     } else {
         caixa.innerHTML = `<div class="com-op" id="caixa1"></div><div class="com-op" id="caixa2"></div>`;
-
-        
-
-        for (let i = 0; i < toFixed(qtdPessoas/2, 0); i++) {
+        let total = ((qtdPessoas/2).toFixed(0))*1;
+        for (let i = 0; i < total; i++) {
             persons += `<div class="person" id="person${i}"></div>`
         }
 
-        for (let i = toFixed(qtdPessoas/2, 0) + 1; i < qtdPessoas; i++) {
+        for (let i = total + 1; i < ((qtdPessoas).toFixed(0))*1; i++) {
             persons += `<div class="person c2" id="person${i}"></div>`
         }
 
         personagem.innerHTML = persons;
         actualF1 = 0;
-        actualF2 = toFixed(qtdPessoas/2, 0) + 1;
+        actualF2 = (total + 1)*1;
 
-        showElement(document.querySelector(`#person${actualF1}`));
-        showElement(document.querySelector(`#person${actualF2}`));
+        movePerson(2);
     }
 
 }
@@ -84,6 +79,75 @@ function createSimulation() {
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
+
+
+function movePerson(param) {
+    if (param === 1) {
+        showElement(document.querySelector(`#person${actualF1}`));
+        showElement(document.querySelector(`#person${actualF2}`));
+
+        let deslocamentoP1 = 850;
+        let x1 = 52;
+        let img1 = 2;
+        timer1 = setInterval(() => {
+            document.querySelector(`#person${actualF1}`).style.transform = `translate(${x1}px, 62px)`;
+            document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p${img1}.png')`;
+            document.querySelector(`#person${actualF1}`).style.backgroundSize = img1 != 1 ? '50px 110px' : '37px 110px';
+            img1++;
+            if (img1 > 3) {
+                img1 = 2;
+            }
+            if (x1 === deslocamentoP1) {
+                document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p1.png')`;
+                document.querySelector(`#person${actualF1}`).style.backgroundSize = '37px 110px';
+                clearInterval(timer1);
+            }
+            x1++;
+        }, Number(velocidade.value));
+    } else {
+        showElement(document.querySelector(`#person${actualF1}`));
+        showElement(document.querySelector(`#person${actualF2}`));
+
+        let deslocamentoP1 = 850;
+        let x1 = 52;
+        let img1 = 2;
+        timer1 = setInterval(() => {
+            document.querySelector(`#person${actualF1}`).style.transform = `translate(${x1}px, 62px)`;
+            document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p${img1}.png')`;
+            document.querySelector(`#person${actualF1}`).style.backgroundSize = img1 != 1 ? '50px 110px' : '37px 110px';
+            img1++;
+            if (img1 > 3) {
+                img1 = 2;
+            }
+            if (x1 === deslocamentoP1) {
+                document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p1.png')`;
+                document.querySelector(`#person${actualF1}`).style.backgroundSize = '37px 110px';
+                clearInterval(timer1);
+            }
+            x1++;
+        }, Number(velocidade.value));
+
+        let deslocamentoP2 = 850;
+        let x2 = 52;
+        let img2 = 2;
+        timer2 = setInterval(() => {
+            document.querySelector(`#person${actualF2}`).style.transform = `translate(${x2}px, 200px)`;
+            document.querySelector(`#person${actualF2}`).style.backgroundImage = `url('assets/p${img2}.png')`;
+            document.querySelector(`#person${actualF2}`).style.backgroundSize = img2 != 1 ? '50px 110px' : '37px 110px';
+            img2++;
+            if (img2 > 3) {
+                img2 = 2;
+            }
+            x2++;
+            if (x2 === deslocamentoP2) {
+                document.querySelector(`#person${actualF2}`).style.backgroundImage = `url('assets/p1.png')`;
+                document.querySelector(`#person${actualF2}`).style.backgroundSize = '37px 110px';
+                clearInterval(timer2);
+            }
+        }, Number(velocidade.value));
+    }
+}
+
 
 /**
  * Usando o css display esta função mostra ou não um elemento

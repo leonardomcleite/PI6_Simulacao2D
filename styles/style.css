@@ -86,14 +86,13 @@ div.person {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 37px 110px;
-  transform: translate(850px, 62px);
-  
+  transform: translate(52px, 62px);
   float: left;
   display: none;
 }
 
-.c2 {
-  transform: translate(850px, 200px);
+div.person.c2 {
+  transform: translate(0px, 200px);
 }
 
 div.com-op {
