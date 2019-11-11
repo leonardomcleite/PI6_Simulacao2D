@@ -82,7 +82,7 @@ function getRandomArbitrary(min, max) {
 
 
 function movePerson(param) {
-    if (param === 1) {
+    if (param === 1 && actualF1 < ((qtdPessoas/2).toFixed(0))*1) {
         showElement(document.querySelector(`#person${actualF1}`));
         showElement(document.querySelector(`#person${actualF2}`));
 
@@ -106,7 +106,7 @@ function movePerson(param) {
             }
             x1++;
         }, Number(velocidade.value));
-    } else {
+    } else if (actualF1 < ((qtdPessoas/2).toFixed(0))*1 && actualF2 < ((qtdPessoas).toFixed(0))*1) {
         showElement(document.querySelector(`#person${actualF1}`));
         showElement(document.querySelector(`#person${actualF2}`));
 
