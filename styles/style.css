@@ -86,7 +86,9 @@ div.person {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 37px 110px;
-  transform: translate(52px, 62px);
+  /* transform: translate(52px, 62px); */
+  /* transform: translate(1034px, 213px); */
+  transform: translate(53px, 213px);
   float: left;
   display: none;
 }

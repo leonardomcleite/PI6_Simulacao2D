@@ -29,49 +29,71 @@ let qtdPessoas = 1;
 let actualF1;
 let actualF2;
 let scene = document.querySelector('#scene');
-let timer1;
-let timer2;
+let timer;
+let timer1 = [];
+let timer2 = [];
+let timerShow = [];
 let velocidade = document.querySelector('#velocidade');
+
+let deslocamentoP1 = [];
+let x1 = [];
+let img1 = [];
 
 
 /**
  * Cria a lista de compartimentos para o combo
  */
 function iniciarSimulacao() {
-    clearInterval(timer1);
-    clearInterval(timer2);
+    for (let index = 0; index < timerShow.length; index++) {
+        clearTimeout(timerShow[index]);
+    }
+    for (let index = 0; index < timer1.length; index++) {
+        clearInterval(timer1[index]);
+    }
     showElement(scene);
+    //Qtd de clientes
     qtdPessoas = getRandomArbitrary(4, 30);
-    let qtdAtendentes = getRandomArbitrary(1.5, 2);
+    qtdPessoas = ((qtdPessoas).toFixed(0))*1;
+    //Objeto clientes
     let persons = ``;
 
-    if ((qtdAtendentes.toFixed(0))*1 === 1) {
-        caixa.innerHTML = `<div class="com-op" id="caixa1"></div><div class="sem-op" id="caixa2"></div>`;
-
-        for (let i = 0; i < ((qtdPessoas).toFixed(0))*1; i++) {
-            persons += `<div class="person" id="person${i}"></div>`
-        }
-        personagem.innerHTML = persons;
-        actualF1 = 0;
-
-        movePerson(1);
-    } else {
-        caixa.innerHTML = `<div class="com-op" id="caixa1"></div><div class="com-op" id="caixa2"></div>`;
-        let total = ((qtdPessoas/2).toFixed(0))*1;
-        for (let i = 0; i < total; i++) {
-            persons += `<div class="person" id="person${i}"></div>`
-        }
-
-        for (let i = total + 1; i < ((qtdPessoas).toFixed(0))*1; i++) {
-            persons += `<div class="person c2" id="person${i}"></div>`
-        }
-
-        personagem.innerHTML = persons;
-        actualF1 = 0;
-        actualF2 = (total + 1)*1;
-
-        movePerson(2);
+    caixa.innerHTML = `<div class="com-op" id="caixa1">`;
+    for (let i = 0; i < qtdPessoas; i++) {
+        persons += `<div class="person" id="person${i}"></div>`
     }
+    personagem.innerHTML = persons;
+    actualF1 = 0;
+
+    // movePerson(1);
+    move(0, true);
+
+    // if ((qtdAtendentes.toFixed(0))*1 === 1) {
+    //     caixa.innerHTML = `<div class="com-op" id="caixa1"></div><div class="sem-op" id="caixa2"></div>`;
+
+    //     for (let i = 0; i < ((qtdPessoas).toFixed(0))*1; i++) {
+    //         persons += `<div class="person" id="person${i}"></div>`
+    //     }
+    //     personagem.innerHTML = persons;
+    //     actualF1 = 0;
+
+    //     movePerson(1);
+    // } else {
+    //     caixa.innerHTML = `<div class="com-op" id="caixa1"></div><div class="com-op" id="caixa2"></div>`;
+    //     let total = ((qtdPessoas/2).toFixed(0))*1;
+    //     for (let i = 0; i < total; i++) {
+    //         persons += `<div class="person" id="person${i}"></div>`
+    //     }
+
+    //     for (let i = total + 1; i < ((qtdPessoas).toFixed(0))*1; i++) {
+    //         persons += `<div class="person c2" id="person${i}"></div>`
+    //     }
+
+    //     personagem.innerHTML = persons;
+    //     actualF1 = 0;
+    //     actualF2 = (total + 1)*1;
+
+    //     movePerson(2);
+    // }
 
 }
 
@@ -79,89 +101,49 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-
-function movePerson(param) {
-    if (param === 1 && actualF1 < ((qtdPessoas/2).toFixed(0))*1) {
-        showElement(document.querySelector(`#person${actualF1}`));
-        showElement(document.querySelector(`#person${actualF2}`));
-
-        let deslocamentoP1 = 850;
-        let x1 = 52;
-        let img1 = 2;
-        timer1 = setInterval(() => {
-            document.querySelector(`#person${actualF1}`).style.transform = `translate(${x1}px, 62px)`;
-            document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p${img1}.png')`;
-            document.querySelector(`#person${actualF1}`).style.backgroundSize = img1 != 1 ? '50px 110px' : '37px 110px';
-            img1++;
-            if (img1 > 3) {
-                img1 = 2;
-            }
-            if (x1 === deslocamentoP1) {
-                document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p1.png')`;
-                document.querySelector(`#person${actualF1}`).style.backgroundSize = '37px 110px';
-                clearInterval(timer1);
-                
-                setTimeout(() => {
-                    showElement(document.querySelector(`#person${actualF1}`), true);
-                    actualF1++;
-                    movePerson(param);
-                }, getRandomArbitrary(1, 10));
-            }
-            x1++;
-        }, Number(velocidade.value));
-    } else if (actualF1 < ((qtdPessoas/2).toFixed(0))*1 && actualF2 < ((qtdPessoas).toFixed(0))*1) {
-        showElement(document.querySelector(`#person${actualF1}`));
-        showElement(document.querySelector(`#person${actualF2}`));
-
-        let deslocamentoP1 = 850;
-        let x1 = 52;
-        let img1 = 2;
-        timer1 = setInterval(() => {
-            document.querySelector(`#person${actualF1}`).style.transform = `translate(${x1}px, 62px)`;
-            document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p${img1}.png')`;
-            document.querySelector(`#person${actualF1}`).style.backgroundSize = img1 != 1 ? '50px 110px' : '37px 110px';
-            img1++;
-            if (img1 > 3) {
-                img1 = 2;
-            }
-            if (x1 === deslocamentoP1) {
-                document.querySelector(`#person${actualF1}`).style.backgroundImage = `url('assets/p1.png')`;
-                document.querySelector(`#person${actualF1}`).style.backgroundSize = '37px 110px';
-                clearInterval(timer1);
-
-                setTimeout(() => {
-                    showElement(document.querySelector(`#person${actualF1}`), true);
-                    actualF1++;
-                    movePerson(param);
-                }, getRandomArbitrary(1, 10));
-            }
-            x1++;
-        }, Number(velocidade.value));
-
-        let deslocamentoP2 = 850;
-        let x2 = 52;
-        let img2 = 2;
-        timer2 = setInterval(() => {
-            document.querySelector(`#person${actualF2}`).style.transform = `translate(${x2}px, 200px)`;
-            document.querySelector(`#person${actualF2}`).style.backgroundImage = `url('assets/p${img2}.png')`;
-            document.querySelector(`#person${actualF2}`).style.backgroundSize = img2 != 1 ? '50px 110px' : '37px 110px';
-            img2++;
-            if (img2 > 3) {
-                img2 = 2;
-            }
-            x2++;
-            if (x2 === deslocamentoP2) {
-                document.querySelector(`#person${actualF2}`).style.backgroundImage = `url('assets/p1.png')`;
-                document.querySelector(`#person${actualF2}`).style.backgroundSize = '37px 110px';
-                clearInterval(timer2);
-                setTimeout(() => {
-                    showElement(document.querySelector(`#person${actualF2}`), true);
-                    actualF2++;
-                    movePerson(param);
-                }, getRandomArbitrary(1, 10));
-            }
-        }, Number(velocidade.value));
+function move(index, first) {
+    let timeout = 0;
+    if (!first) {
+        timeout = getRandomArbitrary(0, 1000);
     }
+    // timer = setInterval(() => {
+        timerShow.push(setTimeout(() => {
+            showElement(document.querySelector(`#person${index}`));
+            deslocamentoP1.push(1034);
+            x1.push(52);
+            img1.push(2);
+            timer1.push(setInterval(() => {
+                document.querySelector(`#person${index}`).style.transform = `translate(${x1[index]}px, 213px)`;
+                document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p${img1[index]}.png')`;
+                document.querySelector(`#person${index}`).style.backgroundSize = img1[index] != 1 ? '50px 110px' : '37px 110px';
+                img1[index]++;
+                if (img1[index] > 3) {
+                    img1[index] = 2;
+                }
+                if (x1[index] >= deslocamentoP1[index]) {
+                    document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p1.png')`;
+                    document.querySelector(`#person${index}`).style.backgroundSize = '37px 110px';
+                    clearTimeout(timerShow[index]);
+                    clearInterval(timer1[index]);
+                    showElement(document.querySelector(`#person${index}`), true);
+                    if (index < qtdPessoas) {
+                        index++;
+                        move(index, false);
+                    }
+                    // timer2.push(setTimeout(() => {
+                    //     clearTimeout(timer2[index]);
+                        
+                    // }, getRandomArbitrary(1000, 10000)));
+                } else {
+                    x1[index]++;
+                }
+            }, Number(velocidade.value)));
+        }, timeout));
+        
+    // }, 0);
+    // for (let index = 0; index < qtdPessoas; index++) {
+        
+    // }
 }
 
 
@@ -170,9 +152,9 @@ function movePerson(param) {
  * @param el - Elemento HTML 
  */
 function showElement(el, hide) {
-    if (hide) {
+    if (hide && el != null) {
         el.style.display = "none";
-    } else {
+    } else if (el != null ){
         el.style.display = "block";
     }
 }
