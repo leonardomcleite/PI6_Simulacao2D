@@ -128,12 +128,12 @@ async function move(index, first) {
                     if (x1[index] >= deslocamentoMax[index]) {
                         document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p1.png')`;
                         document.querySelector(`#person${index}`).style.backgroundSize = '37px 110px';
+                        await sleep(getRandomArbitrary(0, 1000));
                         showElement(document.querySelector(`#person${index}`), true);
                         continuar[index] = false;
                         clearInterval(timer1);
                     } else {
                         x1[index]++;
-                        
                     }   
                 // }
             // }, Number(velocidade.value)));
