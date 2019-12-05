@@ -45,7 +45,7 @@ function next() {
 }
 
 function previous() {
-    $('.carousel').carousel('previous');
+    $('.carousel').carousel('prev');
 }
 
 /**

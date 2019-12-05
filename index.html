@@ -37,13 +37,17 @@
                 </p>
                 <h5>Variáveis estocásticas</h5>
                 <p>
-                  1.	Tempo de setup da máquina;
-                  2.	Dimensão das peças;
-                  3.	Tempo de processamento das peças;
-                  4.	Quantidade de peças com defeito ao fim do processamento;
+                  1.	Tempo de atendimento. Depende fortemente da quantidade de produtos que o cliente vai comprar, logo, podemos perceber
+                  que em supermercados existem as filas com limite de produtos. Também depende da experiência do atendente, quanto mais experiente o atendimento, o tempo de atendimento tende a ser mais rápido;
+                  <br><br>
+                  2.	Quantidade de clientes na fila. De acordo com os estudos, depende muito do dia do mês, por exemplo, no fim do mês as filas tendem a ser maiores. Podemos perceber também 
+                  que nos supermercados existem diversos caixas em paralelo para atender este deficit, e tabmém por questões de comportamento dos clientes, pois quando se percebe uma fila
+                  muito grande, tendem a desistir das compras;
+                  <br><br>
+                  3.	
                 </p>
                 <h5>Ferramentas utilizadas</h5>
-                <p>O projeto será desenvolvido na plataforma IOS, com o framework SceneKit.</p>
+                <p>O projeto foi desenvolvido em Javascript e Bootstrap para o Design.</p>
               </div>
               <div class="d-flex flex-row-reverse col-sm-12" style="justify-content: center;margin: 55px 0 20px 0;">
                 <button type="button" class="btn btn-primary mb-2" style="width: 400px;" onclick="return next()">Ir para Simulação</button>
@@ -51,12 +55,15 @@
             </div>
             <div class="carousel-item carousel-compartimentos">
               <div class="row">
-                <div class="input-group row col-sm-3" style="margin-left: 100px;">
+                <div class="input-group row col-sm-2" style="margin-left: 100px;">
                   <label for="velocidade" class="col-sm-6 col-form-label"> Velocidade(ms) </label>
                   <input type="number" class="col-sm-6 form-control" id="velocidade" value="1">
                 </div>
-                <div class="d-flex flex-row-reverse col-sm-6" style="justify-content: center;margin: 20px 0;">
+                <div class="d-flex flex-row-reverse col-sm-5" style="justify-content: center;margin: 20px 0;">
                   <button type="button" class="btn btn-primary mb-2" style="width: 400px;" onclick="return iniciarSimulacao()">Iniciar Simulação</button>
+                </div>
+                <div class="d-flex flex-row-reverse col-sm-4" style="justify-content: center;margin: 20px 0;">
+                  <button type="button" class="btn btn-primary mb-2" style="width: 400px;" onclick="return previous()">Voltar para Descrição</button>
                 </div>
               </div>
               <div class="background-scene" id="scene" style="display: none; margin: 0 auto;">
