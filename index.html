@@ -27,37 +27,32 @@
         <h6 class="card-subtitle mb-2 text-muted">Teoria das Filas</h6>
       </div>
       <div class="form">
-        <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <form id="formStep1" onsubmit="return false;">
-                <div class="input-group row">
-                  <label for="inputQtdAtendentes" class="col-sm-3 col-form-label"> Quantidade de Atendentes</label>
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"> # </div>
-                  </div>
-                  <input type="number" class="form-control" id="inputQtdAtendentes" placeholder="Informe um número de 1 á 3" value="1">
-                </div>
-                <div class="input-group row">
-                  <label for="inputQtdAtendentes" class="col-sm-3 col-form-label"> Tempo de Atendimento </label>
-                  <div class="input-group-prepend">
-                    <div class="input-group-text"> # </div>
-                  </div>
-                  <input type="number" class="form-control" id="inputQtdAtendentes" placeholder="Informe um número maior que 0" value="1">
-                </div>
-  
-                <div class="d-flex flex-row-reverse">
-                  <button type="button" class="btn btn-primary mb-2" onclick="return setQuantidadeCompartimentos()">Continuar</button>
-                </div>
-              </form>
-            </div> -->
-            <div class="carousel-item carousel-compartimentos active">
+              <div>
+                <h5>Descrição do Sistema</h5>
+                <p>
+                    Simulação de filas de um supermercado. O modelo simula o comportamento de filas em um supermercado.
+                </p>
+                <h5>Variáveis estocásticas</h5>
+                <p>
+                  1.	Tempo de setup da máquina;
+                  2.	Dimensão das peças;
+                  3.	Tempo de processamento das peças;
+                  4.	Quantidade de peças com defeito ao fim do processamento;
+                </p>
+                <h5>Ferramentas utilizadas</h5>
+                <p>O projeto será desenvolvido na plataforma IOS, com o framework SceneKit.</p>
+              </div>
+              <div class="d-flex flex-row-reverse col-sm-12" style="justify-content: center;margin: 55px 0 20px 0;">
+                <button type="button" class="btn btn-primary mb-2" style="width: 400px;" onclick="return next()">Ir para Simulação</button>
+              </div>
+            </div>
+            <div class="carousel-item carousel-compartimentos">
               <div class="row">
                 <div class="input-group row col-sm-3" style="margin-left: 100px;">
                   <label for="velocidade" class="col-sm-6 col-form-label"> Velocidade(ms) </label>
-                  <!-- <div class="input-group-prepend">
-                    <div class="input-group-text"> # </div>
-                  </div> -->
                   <input type="number" class="col-sm-6 form-control" id="velocidade" value="1">
                 </div>
                 <div class="d-flex flex-row-reverse col-sm-6" style="justify-content: center;margin: 20px 0;">
@@ -65,8 +60,6 @@
                 </div>
               </div>
               <div class="background-scene" id="scene" style="display: none; margin: 0 auto;">
-                <!-- <div class="com-op" id="caixa"></div>
-                <div class="com-op" id="caixa2"></div> -->
                 <div caixa></div>
                 <div personagem></div>
               </div>
