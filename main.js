@@ -35,9 +35,10 @@ let timer2 = [];
 let timerShow = [];
 let velocidade = document.querySelector('#velocidade');
 
-let deslocamentoP1 = [];
+let deslocamentoMax = [];
 let x1 = [];
 let img1 = [];
+let continuar = [];
 
 
 /**
@@ -64,8 +65,15 @@ function iniciarSimulacao() {
     personagem.innerHTML = persons;
     actualF1 = 0;
 
+
+    deslocamentoMax = new Array(qtdPessoas).fill(1034);
+    x1 = new Array(qtdPessoas).fill(52);
+    img1 = new Array(qtdPessoas).fill(2);
+    continuar = new Array(qtdPessoas).fill(true);
+
     // movePerson(1);
-    move(0, true);
+    move(-1, true);
+    // testSleep();
 
     // if ((qtdAtendentes.toFixed(0))*1 === 1) {
     //     caixa.innerHTML = `<div class="com-op" id="caixa1"></div><div class="sem-op" id="caixa2"></div>`;
@@ -97,53 +105,43 @@ function iniciarSimulacao() {
 
 }
 
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-}
+async function move(index, first) {
+    if (!first) { await sleep(getRandomArbitrary(0, 1000)); }
 
-function move(index, first) {
-    let timeout = 0;
-    if (!first) {
-        timeout = getRandomArbitrary(0, 1000);
+    if (index < (qtdPessoas - 1)) {
+        index++;
+        move(index, false);
     }
-    // timer = setInterval(() => {
-        timerShow.push(setTimeout(() => {
-            showElement(document.querySelector(`#person${index}`));
-            deslocamentoP1.push(1034);
-            x1.push(52);
-            img1.push(2);
-            timer1.push(setInterval(() => {
-                document.querySelector(`#person${index}`).style.transform = `translate(${x1[index]}px, 213px)`;
-                document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p${img1[index]}.png')`;
-                document.querySelector(`#person${index}`).style.backgroundSize = img1[index] != 1 ? '50px 110px' : '37px 110px';
-                img1[index]++;
-                if (img1[index] > 3) {
-                    img1[index] = 2;
-                }
-                if (x1[index] >= deslocamentoP1[index]) {
-                    document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p1.png')`;
-                    document.querySelector(`#person${index}`).style.backgroundSize = '37px 110px';
-                    clearTimeout(timerShow[index]);
-                    clearInterval(timer1[index]);
-                    showElement(document.querySelector(`#person${index}`), true);
-                    if (index < qtdPessoas) {
-                        index++;
-                        move(index, false);
+
+    // if (timer1.length <= index) {
+        showElement(document.querySelector(`#person${index}`));
+        while (continuar[index]) {
+            // timer1.push(setInterval(() => {
+                // if (index === 0 || (x1[index] + 1) <= x1[index - 1]) {
+                    document.querySelector(`#person${index}`).style.transform = `translate(${x1[index]}px, 213px)`;
+                    document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p${img1[index]}.png')`;
+                    document.querySelector(`#person${index}`).style.backgroundSize = img1[index] != 1 ? '50px 110px' : '37px 110px';
+                    img1[index]++;
+                    if (img1[index] > 3) {
+                        img1[index] = 2;
                     }
-                    // timer2.push(setTimeout(() => {
-                    //     clearTimeout(timer2[index]);
+                    if (x1[index] >= deslocamentoMax[index]) {
+                        document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p1.png')`;
+                        document.querySelector(`#person${index}`).style.backgroundSize = '37px 110px';
+                        showElement(document.querySelector(`#person${index}`), true);
+                        continuar[index] = false;
+                        clearInterval(timer1);
+                    } else {
+                        x1[index]++;
                         
-                    // }, getRandomArbitrary(1000, 10000)));
-                } else {
-                    x1[index]++;
-                }
-            }, Number(velocidade.value)));
-        }, timeout));
-        
-    // }, 0);
-    // for (let index = 0; index < qtdPessoas; index++) {
-        
+                    }   
+                // }
+            // }, Number(velocidade.value)));
+            
+            await sleep(velocidade.value);
+        }
     // }
+    
 }
 
 
@@ -159,90 +157,12 @@ function showElement(el, hide) {
     }
 }
 
-/**
- * Observa qualquer alteração feita no combo dos compartimentos para preencher os formularios que ja foram salvos
- */
-function changeCompartimento() {
-    // Rendereriza opções para o compartimento selecionado
-    componentConfigCompartimento.innerHTML = configSelect(Number(comboCompartimentoSelecionado.value));
-    // Preenche os campos que ja foram salvos
-    inputQtdInicial.value = 0;
-    if (comboCompartimentoSelecionado.value !== "") {
-        btnSalvar.disabled = false;
-        configuracoes.style.display = "block";
-        let atual = storage[comboCompartimentoSelecionado.value];
-        if (atual) {
-            inputQtdInicial.value = atual.qtdInicial < 0 ? (atual.qtdInicial * -1) : atual.qtdInicial;
-            for (let i = 0; i <= qtdCompartimentos; i++) {
-                if (i !== Number(comboCompartimentoSelecionado.value)) {
-                    let check = document.querySelector(`#check${i}`);
-                    let taxa = document.querySelector(`#taxa${i}`);
-                    // let item = document.querySelector(`#form${i}`);
-                    for (let j = 0; j < atual.saidas.length; j++) {
-                        if (atual.saidas[j].compartimento === i && check && taxa) {
-                            check.checked = true;
-                            taxa.value = atual.saidas[j].taxa;
-                            // item.style.display = "flex";
-                        }
-                    }
-                }
-            }
-        }
-        if (Number(comboCompartimentoSelecionado.value) === 0) {
-            formQtdInicial.style.display = "none";
-        } else {
-            formQtdInicial.style.display = "flex";
-        }
-    } else {
-        btnSalvar.disabled = true;
-        configuracoes.style.display = "none";
-    }
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
 }
 
-/**
- * Renderiza os compartimentos possiveis, onde o compartimento selecionado possa realizar tranferencias
- * @param atual - Compartimento atual 
- */
-function configSelect(atual) {
-    let result = ``;
-    for (let i = 0; i <= qtdCompartimentos; i++) {
-        if (i !== atual) {
-            qtdIndividual = ``;
-            if (atual === 0) {
-                qtdIndividual += `
-                <div class="input-group row">
-                    <label for="inputQtdInicial${i}" class="col-sm-3 col-form-label"> Quantidade Inicial </label>
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"> # </div>
-                    </div>
-                    <input type="number" class="form-control" id="inputQtdInicial${i}" placeholder="Quantidade">
-                </div>`
-            }
-            result += `
-            <div class="input-group row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-10">
-                    <div class="custom-control custom-checkbox mr-sm-2" for="check${i}">
-                        <input class="custom-control-input" type="checkbox" id="check${i}" style="cursor: pointer" onchange="return showElement(form${i})">
-                        <label class="custom-control-label" style="cursor: pointer" for="check${i}">
-                            ${i !== 0 ? `Transf. Compartimento ${i}` : `Transf. Meio Externo`}
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div id="form${i}" style="display: none">
-                ${qtdIndividual}
-                <div class="input-group row">
-                    <label class="col-sm-3 col-form-label"> Taxa Transferência</label>
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"> % </div>
-                    </div>
-                    <input type="number" class="form-control" id="taxa${i}" placeholder="Taxa">
-                </div>
-            </div>`;
-        }
-    }
-    return result;
+async function sleep(msec) {
+    return new Promise(resolve => setTimeout(resolve, msec));
 }
 
 /**
