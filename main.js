@@ -117,7 +117,7 @@ async function move(index, first) {
         showElement(document.querySelector(`#person${index}`));
         while (continuar[index]) {
             // timer1.push(setInterval(() => {
-                // if (index === 0 || (x1[index] + 1) <= x1[index - 1]) {
+                if (index === 0 || (x1[index] + 50) <= x1[index - 1]) {
                     document.querySelector(`#person${index}`).style.transform = `translate(${x1[index]}px, 213px)`;
                     document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p${img1[index]}.png')`;
                     document.querySelector(`#person${index}`).style.backgroundSize = img1[index] != 1 ? '50px 110px' : '37px 110px';
@@ -129,13 +129,14 @@ async function move(index, first) {
                         document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p1.png')`;
                         document.querySelector(`#person${index}`).style.backgroundSize = '37px 110px';
                         await sleep(getRandomArbitrary(0, 1000));
+                        x1[index] += 50;
                         showElement(document.querySelector(`#person${index}`), true);
                         continuar[index] = false;
                         clearInterval(timer1);
                     } else {
                         x1[index]++;
                     }   
-                // }
+                }
             // }, Number(velocidade.value)));
             
             await sleep(velocidade.value);
