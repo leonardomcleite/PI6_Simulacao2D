@@ -136,6 +136,9 @@ async function move(index, first) {
                     } else {
                         x1[index]++;
                     }   
+                } else {
+                    document.querySelector(`#person${index}`).style.backgroundImage = `url('assets/p1.png')`;
+                    document.querySelector(`#person${index}`).style.backgroundSize = '37px 110px';
                 }
             // }, Number(velocidade.value)));
             
